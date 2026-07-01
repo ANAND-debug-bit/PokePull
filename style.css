@@ -252,9 +252,154 @@ gap: 0.5rem;}
 .rarity-pill.tier-secret { color: var(--secret); 
 border-color: var(--secret); }
 
+.card-blurb { color: var(--muted);
+ font-size: 0.9rem;
+ line-height: 1.45;
+ margin: 0 0 0.7rem;}
+
+.point-tag { font-family: 'Space Mono', monospace;
+ font-weight: 700;
+ color: var(--gold); }
 
 
+.big-art-dock { width: 0;
+ opacity: 0;
+ overflow: hidden;
+ border-radius: 14px;
+ position: relative;
+ transition: width 0.35s ease, opacity 0.35s ease; }
 
+.big-art-dock.show { width: 240px;
+ opacity: 1; }
+
+.big-art-dock img { width: 240px;
+ height: 100%;
+ object-fit: cover;
+ border-radius: 14px;
+ display: block;
+ position: relative;
+ z-index: 1; }
+
+.dock-glow { position: absolute;
+ inset: -6px;
+ border-radius: 18px;
+ z-index: 0;
+ background: linear-gradient(160deg, var(--c-common), transparent 70%);
+ filter: blur(14px);
+ opacity: 0.7; }
+
+.dock-glow.tier-common { background: linear-gradient(160deg, 
+var(--c-common), transparent 70%); }
+.dock-glow.tier-uncommon { background: linear-gradient(160deg, 
+var(--c-uncommon), transparent 70%); }
+.dock-glow.tier-rare { background: linear-gradient(160deg, 
+var(--c-rare), transparent 70%); }
+.dock-glow.tier-ultra { background: linear-gradient(160deg, 
+var(--c-ultra), transparent 70%); }
+.dock-glow.tier-secret { background: linear-gradient(160deg, 
+ var(--c-secret), var(--red) 70%); opacity: 0.9; }
+
+
+.roll-btn { align-self: center;
+ background: var(--red);
+ color: #fff;
+ border: none;
+ font-family: 'Bangers', cursive;
+ font-size: 1.3rem;
+ letter-spacing: 0.5px;
+ padding: 0.85rem 2.6rem;
+ border-radius: 999px;
+ cursor: pointer;
+ box-shadow: 0 6px 0 #a72a24;
+ transition: transform 0.1s ease, box-shadow 0.1s ease; }
+
+.roll-btn:hover { transform: translateY(-2px); }
+.roll-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #a72a24; }
+.roll-btn:disabled { background: var(--panel-line);
+ box-shadow: none;
+ cursor: not-allowed;
+ transform: none; }
+
+.odds-note { text-align: center;
+ color: var(--muted);
+ font-size: 0.78rem;
+ margin: -0.6rem 0 0; }
+
+
+.foot-note { position: relative;
+ z-index: 1;
+ text-align: center;
+ color: var(--muted);
+ font-size: 0.8rem;
+ padding: 1.5rem; }
+
+
+.rules-toggle { position: relative; }
+.rules-toggle summary {
+ list-style: none;
+ cursor: pointer; }
+
+.rules-toggle summary::-webkit-details-marker { display: none; }
+.rules-box { position: absolute;
+ right: 0;
+ top: calc(100% + 0.6rem);
+ background: var(--panel);
+ border: 1px solid var(--panel-line);
+ border-radius: 12px;
+ padding: 1.2rem 1.4rem;
+ width: 300px;
+ z-index: 5; }
+.rules-box ul { color: var(--muted); font-size: 0.85rem; line-height: 1.6; padding-left: 1.1rem; margin: 0; }
+
+.win-banner { text-align: center;
+ padding: 1rem 0 0.5rem; }
+.win-banner h2 { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+
+.final-scores { display: flex;
+ flex-direction: column;
+ gap: 0.6rem;
+ margin-bottom: 1.5rem;
+ max-width: 320px;
+ margin-left: auto;
+ margin-right: auto; }
+
+.final-row { display: flex;
+ justify-content: space-between;
+ padding: 0.7rem 1rem;
+ border-radius: 10px;
+ background: var(--bg-soft);
+ border: 1px solid var(--panel-line); }
+
+.final-row.winner { border-color: var(--gold);
+ background: rgba(244,197,66,0.08); }
+
+.final-row b { font-family: 'Space Mono', monospace; color: var(--gold); }
+
+
+.reset-form { margin-top: 0.8rem; }
+
+@media (max-width: 980px) {
+ .arena { grid-template-columns: 1fr;
+   padding: 1.5rem; }
+
+ .stage-body {flex-direction: column; }
+
+ .big-art-dock {width: 100% !important;
+   height: 0; }
+
+ .big-art-dock.show { height: 220px; }
+ .big-art-dock img { width: 100%; height: 220px; }
+ .card-result { flex-direction: column; text-align: center; }
+}
+
+
+@media (max-width: 560px) {
+ .top-bar { padding: 1.2rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+ .brand h1 { font-size: 1.6rem; }
+ .score-num { font-size: 2.1rem; }
+ .card-frame { width: 140px; height: 190px; }
+ .roll-btn { width: 100%; padding: 0.85rem 1rem; }
+}
 
 
 

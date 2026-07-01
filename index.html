@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poke Pull - Two Player Card Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-dots"></div>
+
+  <header class="top-bar">
+    <div class="brand">
+      <div class="pokeball"></div>
+      <div>
+        <h1>Poke Pull</h1>
+        <p class="tagline">two player pokemon card game, highest score after 3 rounds wins</p>
+      </div>
+    </div>
+    <button id="rulesBtn" class="ghost-btn">rules</button>
+  </header>
+
+  <main class="arena">
+
+    <section class="player-panel" id="player1">
+      <div class="panel-head">
+        <input class="player-name-input" id="p1Name" value="Player 1" maxlength="14">
+        <span class="turn-flag" id="p1turn">your turn</span>
+      </div>
+      <div class="score-block">
+        <span class="score-num" id="p1score">0</span>
+        <span class="score-label">points</span>
+      </div>
+      <div class="round-pips" id="pips1"></div>
+      <ul class="pull-log" id="log1"></ul>
+    </section>
+
+    <section class="stage">
+      <div class="stage-top">
+        <span class="round-tag" id="roundLabel">round 1 / 3</span>
+        <span class="turn-banner" id="whoseTurn">Player 1, your turn!</span>
+      </div>
+
+      <div class="stage-body">
+        <div class="card-result">
+          <div class="card-frame empty" id="cardBox">
+            <p class="placeholder-text">no card pulled yet, hit roll</p>
+          </div>
+          <div class="card-meta">
+            <h2 id="pulledName">&nbsp;</h2>
+            <span class="rarity-pill" id="pulledRarity">&nbsp;</span>
+            <p class="card-blurb" id="pulledBlurb"></p>
+            <span class="point-tag" id="pulledPoints"></span>
+          </div>
+        </div>
+
+        <div class="big-art-dock" id="sideArt">
+          <img id="sideArtImg" alt="" />
+          <div class="dock-glow" id="sideGlow"></div>
+        </div>
+      </div>
+
+      <button class="roll-btn" id="rollBtn">Roll</button>
+      <p class="odds-note">rarer cards = lower odds, but they're worth more points</p>
+    </section>
+
+<section class="player-panel" id="player2box">
+  <div class="panel-head">
+        <input class="player-name-input" id="name2" value="Player 2" maxlength="14">
+        <span class="turn-flag" id="turnFlag2">waiting</span>
+  </div>
+  <div class="score-block">
+      <span class="score-num" id="score2">0</span>
+      <span class="score-label">points</span>
+      </div>
+      <div class="round-pips" id="p2pips"></div>
+      <ul class="pull-log" id="p2log"></ul>
+    </section>
+
+  </main>
+
+  <footer class="foot-note">
+    <p>play on one device, just pass it to the other player on their turn </p>
+  </footer>
+
+<div class="modal-backdrop" id="rulesModal">
+   <div class="modal-box">
+    <h3>how to play</h3>
+    <ul>
+      <li>3 rounds total, both players roll once per round</li>
+      <li>every card has a rarity, common up to secret, rarer = more points but way less likely</li>
+      <li>points just add up automatically as you roll</li>
+      <li>after round 3 whoever has more points wins. same score = draw</li>
+      </ul>
+<button class="ghost-btn" id="closeRules">got it</button>
+</div>
+</div>
+
+  <div class="modal-backdrop" id="winModal">
+    <div class="modal-box win-box">
+      <h2 id="winText">Player 1 wins</h2>
+      <div class="final-scores" id="finalScores"></div>
+      <button class="roll-btn" id="playAgainBtn">play again</button>
+    </div>
+  </div>
+
+  <script src="cards.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+

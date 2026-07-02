@@ -82,7 +82,7 @@ color: var(--gold); }
 .ghost-btn:hover { border-color: var(--gold); background: rgba(244,197,66,0.08); }
 
 .arena { position: relative;
-  z-index: 1;
+  z-index: 20;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 1.5rem;

@@ -59,8 +59,64 @@ def home():
         total_rounds=TOTAL_ROUNDS,
     )
 
+# when the player click on the roll button
+@app.route("/roll", methods=["POST"])
+def roll():
+    state = get_state()
+    if state["game_over"]:
+        return redirect(url_for("home"))  
+
+    tier = pick_tier()
+    card = pick_card(tier)
+    points = TIERS[tier]["points"]
+    blurb = pick_blurb(tier, card["name"])
+
+    roll_entry = {
+        "name": card["name"],
+        "tier": tier,
+        "label": TIERS[tier]["label"],
+        "points": points,
+        "img": card["img"],
+        "blurb": blurb,
+    }
+
+    if state["turn"] == 0:
+        state["p1_score"] += points
+        state["p1_rolls"].insert(0, roll_entry)  
+    else:
+        state["p2_score"] += points
+        state["p2_rolls"].insert(0, roll_entry)
+
+    state["last_card"] = roll_entry
+
+    state["turn"] = 1 - state["turn"]
+
+    if state["turn"] == 0:
+        state["round"] += 1
+
+    if state["round"] > TOTAL_ROUNDS:
+        state["game_over"] = True
+
+    save_state(state)
+    return redirect(url_for("home"))
 
 
+#adding their own name to the game makes it more interesting to play
+@app.route("/names", methods=["POST"])
+def set_names():
+    state = get_state()
+    p1 = request.form.get("p1_name", "").strip()
+    p2 = request.form.get("p2_name", "").strip()
+    state["p1_name"] = p1 or "Player 1"
+    state["p2_name"] = p2 or "Player 2"
+    save_state(state)
+    return redirect(url_for("home"))
 
+@app.route("/reset", methods=["POST"])
+def reset():
+    session["game"] = fresh_state()
+    return redirect(url_for("home"))
 
+if __name__ == "__main__":
+    app.run(debug=True, port=5001)
 
